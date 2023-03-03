@@ -33,7 +33,7 @@ public class LoginPage extends Page {
     }
 
     public boolean isNavbarDisplayed(){
-        return !isDisplayed(navbar);
+        return isDisplayed(navbar);
     }
 
 }

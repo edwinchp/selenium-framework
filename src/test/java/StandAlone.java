@@ -15,10 +15,7 @@ public class StandAlone {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
-
-
         driver.get("http:localhost:8000");
-        Thread.sleep(2000);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.typeUsername("Secretario Edwin");
