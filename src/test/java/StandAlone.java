@@ -1,25 +1,30 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import pages.LoginPage;
 
 import java.time.Duration;
-import java.util.HashMap;
 
 public class StandAlone {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebDriverManager.chromedriver().setup();
 
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
+
+
         driver.get("http:localhost:8000");
-        driver.findElement(By.id("login")).sendKeys("Secretario Edwin");
-        driver.findElement(By.id("password")).sendKeys("vivacristorey");
-        driver.findElement(By.xpath("//input[@value='iniciar sesion']")).click();
-        System.out.println(driver.findElement(By.xpath("//nav[@class='navbar navbar-expand-lg navbar-dark bg-dark']")).isDisplayed());
+        Thread.sleep(2000);
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeUsername("Secretario Edwin");
+        loginPage.typePassword("vivacristorey");
+        loginPage.clickLoginButton();
+        Assert.assertTrue(loginPage.isNavbarDisplayed());
 
         driver.quit();
     }
