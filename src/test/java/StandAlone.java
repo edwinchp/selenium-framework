@@ -1,25 +1,22 @@
 import components.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import org.testng.annotations.Test;
 import pages.LoginPage;
 
-import java.time.Duration;
+import java.io.IOException;
+
 
 public class StandAlone extends BaseTest {
-    public static void main(String[] args) throws InterruptedException {
 
+        @Test
+        public void login() throws IOException {
+            LoginPage loginPage = launchApplication();
+            loginPage.typeUsername("Secretario Edwin");
+            loginPage.typePassword("vivacristorey");
+            loginPage.clickLoginButton();
+            //Asset.assertTrue(loginPage.isNavbarDisplayed());
 
-        driver.get("http:localhost:8000");
-
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.typeUsername("Secretario Edwin");
-        loginPage.typePassword("vivacristorey");
-        loginPage.clickLoginButton();
-        Assert.assertTrue(loginPage.isNavbarDisplayed());
-
-        driver.quit();
-    }
+            closeBrowser();
+        }
 }

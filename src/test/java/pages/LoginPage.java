@@ -20,6 +20,10 @@ public class LoginPage extends Page {
     By navbar = By.xpath("//nav[@class='navbar navbar-expand-lg navbar-dark bg-dark']");
 
 
+    public void goTo(String url){
+        driver.get(url);
+    }
+
     public void typeUsername(String username){
         type(usernameInput, username);
     }
