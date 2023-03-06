@@ -1,3 +1,4 @@
+import components.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -7,13 +8,9 @@ import pages.LoginPage;
 
 import java.time.Duration;
 
-public class StandAlone {
+public class StandAlone extends BaseTest {
     public static void main(String[] args) throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
 
         driver.get("http:localhost:8000");
 
