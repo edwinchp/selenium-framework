@@ -33,7 +33,7 @@ public class BaseTest {
 
     private Properties loadProperties() throws IOException {
         Properties prop = new Properties();
-        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src/main//java//resources//global-data.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src/main//java//resources//properties//global-data.properties");
         prop.load(fis);
         return prop;
     }

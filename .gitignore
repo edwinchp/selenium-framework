@@ -1,4 +1,4 @@
 /target
 /.idea
 /.vscode
-/src/main/java/resources/global-data.properties
+/src/main/java/resources/properties/global-data.properties

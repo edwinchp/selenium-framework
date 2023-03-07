@@ -1,6 +1,7 @@
 import components.BaseTest;
 
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
@@ -15,7 +16,7 @@ public class StandAlone extends BaseTest {
             loginPage.typeUsername("Secretario Edwin");
             loginPage.typePassword("vivacristorey");
             loginPage.clickLoginButton();
-            //Asset.assertTrue(loginPage.isNavbarDisplayed());
+            Assert.assertTrue(loginPage.isNavbarDisplayed());
 
             closeBrowser();
         }
