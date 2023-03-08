@@ -23,4 +23,8 @@ public class Page {
     protected boolean isDisplayed(By ele){
         return driver.findElement(ele).isDisplayed();
     }
+
+    protected String getText(By ele){
+        return driver.findElement(ele).getText();
+    }
 }

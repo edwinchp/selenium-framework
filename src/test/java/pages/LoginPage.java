@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import pages.base.Page;
 
 public class LoginPage extends Page {
-    WebDriver driver;
+    private WebDriver driver;
 
     public LoginPage(WebDriver driver){
         super(driver);
@@ -18,6 +18,7 @@ public class LoginPage extends Page {
     By passwordInput = By.id("password");
     By loginButton = By.xpath("//input[@value='iniciar sesion']");
     By navbar = By.xpath("//nav[@class='navbar navbar-expand-lg navbar-dark bg-dark']");
+    By errorMessage = By.xpath("//div[@class='swal-text']");
 
 
     public void goTo(String url){
@@ -38,6 +39,10 @@ public class LoginPage extends Page {
 
     public boolean isNavbarDisplayed(){
         return isDisplayed(navbar);
+    }
+
+    public String getErrorMessage(){
+        return getText(errorMessage);
     }
 
 }

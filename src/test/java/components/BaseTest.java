@@ -3,6 +3,8 @@ package components;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import pages.LoginPage;
 import resources.utils.TestProperties;
 
@@ -15,13 +17,14 @@ import java.util.Properties;
 public class BaseTest {
 
     private WebDriver driver;
-    private TestProperties prop;
+    private Properties prop;
 
 
     protected WebDriver initializeDriver() throws IOException {
-        prop = new TestProperties();
+        prop = new Properties();
+        prop = new TestProperties().getProperties();
 
-       if(prop.getProperties().getProperty("browser").equalsIgnoreCase("chrome")){
+       if(getProperties().getProperty("browser").equalsIgnoreCase("chrome")){
            WebDriverManager.chromedriver().setup();
            driver = new ChromeDriver();
            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -34,11 +37,16 @@ public class BaseTest {
     protected LoginPage launchApplication() throws IOException {
         driver = initializeDriver();
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.goTo(prop.getProperties().getProperty("url"));
+        loginPage.goTo(getProperties().getProperty("url"));
         return loginPage;
     }
 
+    protected Properties getProperties(){
+        return prop;
+    }
+
+    @AfterMethod
     protected void closeBrowser(){
-        driver.quit();
+        driver.close();
     }
 }

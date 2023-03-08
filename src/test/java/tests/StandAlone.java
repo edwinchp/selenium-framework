@@ -1,3 +1,5 @@
+package tests;
+
 import components.BaseTest;
 
 
@@ -14,12 +16,9 @@ public class StandAlone extends BaseTest {
         @Test
         public void login() throws IOException {
             LoginPage loginPage = launchApplication();
-            TestProperties testProperties = new TestProperties();
-            loginPage.typeUsername(testProperties.getProperties().getProperty("username"));
-            loginPage.typePassword(testProperties.getProperties().getProperty("password"));
+            loginPage.typeUsername(getProperties().getProperty("username"));
+            loginPage.typePassword(getProperties().getProperty("password"));
             loginPage.clickLoginButton();
             Assert.assertTrue(loginPage.isNavbarDisplayed());
-
-            closeBrowser();
         }
 }
