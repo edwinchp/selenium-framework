@@ -1,6 +1,9 @@
 package components;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -8,10 +11,15 @@ import org.testng.annotations.AfterTest;
 import pages.LoginPage;
 import resources.utils.TestProperties;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 public class BaseTest {
@@ -48,5 +56,19 @@ public class BaseTest {
     @AfterMethod
     protected void closeBrowser(){
         driver.close();
+    }
+
+    protected void takeScreenshot(){
+        try {
+            Date date = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss-S");
+            String fileName = dateFormat.format(date);
+            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+            File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+            File destinationFile = new File(System.getProperty("user.dir") + "/target/screenshots/" + fileName + ".png");
+            FileUtils.copyFile(source, destinationFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
