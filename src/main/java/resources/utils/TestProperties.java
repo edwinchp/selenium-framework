@@ -8,10 +8,14 @@ public class TestProperties {
 
     private Properties prop;
 
-    public TestProperties() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "//src//main//java//resources//properties//global-data.properties");
-        prop = new Properties();
-        prop.load(fileInputStream);
+    public TestProperties() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "//src//main//java//resources//properties//global-data.properties");
+            prop = new Properties();
+            prop.load(fileInputStream);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public Properties getProperties(){

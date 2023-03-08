@@ -7,13 +7,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
+import java.util.Properties;
 
 public class Wait {
     private FluentWait<WebDriver> wait;
 
-    public Wait(WebDriver driver, int seconds){
+    public Wait(WebDriver driver){
+        Properties prop = new TestProperties().getProperties();
+        int timeout = Integer.parseInt(prop.getProperty("timeout_seconds"));
+
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(seconds))
+                .withTimeout(Duration.ofSeconds(timeout))
                 .pollingEvery(Duration.ofMillis(200));
     }
 
