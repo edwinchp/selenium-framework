@@ -18,9 +18,7 @@ public class StandAlone extends BaseTest {
             LoginPage loginPage = launchApplication();
             loginPage.typeUsername(getProperties().getProperty("username"));
             loginPage.typePassword(getProperties().getProperty("password"));
-            takeScreenshot();
             loginPage.clickLoginButton();
-            takeScreenshot();
             Assert.assertTrue(loginPage.isNavbarDisplayed());
         }
 }

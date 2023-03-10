@@ -58,17 +58,20 @@ public class BaseTest {
         driver.close();
     }
 
-    protected void takeScreenshot(){
+    protected String takeScreenshot(WebDriver driver) {
+        String filePath;
         try {
             Date date = Calendar.getInstance().getTime();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss-S");
             String fileName = dateFormat.format(date);
             TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
             File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-            File destinationFile = new File(System.getProperty("user.dir") + "/target/screenshots/" + fileName + ".png");
+            filePath = System.getProperty("user.dir") + "/target/screenshots/" + fileName + ".png";
+            File destinationFile = new File(filePath);
             FileUtils.copyFile(source, destinationFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return filePath;
     }
 }

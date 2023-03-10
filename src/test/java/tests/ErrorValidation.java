@@ -17,7 +17,6 @@ public class ErrorValidation extends BaseTest {
             loginPage.typeUsername("Username");
             loginPage.typePassword(getProperties().getProperty("password"));
             loginPage.clickLoginButton();
-            takeScreenshot();
             Assert.assertEquals(loginPage.getErrorMessage(), "Falló al entrar");
         }
 }
