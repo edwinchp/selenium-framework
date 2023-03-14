@@ -7,13 +7,13 @@
         <listener class-name="components.Listener"/>
     </listeners>
 
-    <test thread-count="2" name="Test">
+    <test thread-count="5" name="Test">
         <classes>
             <class name="tests.ErrorValidation"/>
         </classes>
     </test>
 
-    <test thread-count="2" name="StandAlone">
+    <test thread-count="5" name="StandAlone">
         <classes>
             <class name="tests.StandAlone"/>
         </classes>

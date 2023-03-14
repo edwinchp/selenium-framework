@@ -26,7 +26,7 @@ public class Listener extends BaseTest implements ITestListener {
             WebDriver driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
             test.addScreenCaptureFromPath(takeScreenshot(driver), result.getMethod().getMethodName());
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
@@ -38,7 +38,7 @@ public class Listener extends BaseTest implements ITestListener {
             WebDriver driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
             test.addScreenCaptureFromPath(takeScreenshot(driver), result.getMethod().getMethodName());
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
