@@ -13,15 +13,17 @@ public class Listener extends BaseTest implements ITestListener {
 
     ExtentReports extent = ExtentReportNG.getReportObject();
     ExtentTest test;
+
+    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
     @Override
     public void onTestStart(ITestResult result){
             test = extent.createTest(result.getMethod().getMethodName());
+            extentTest.set(test);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        test.log(Status.PASS, "Passed");
-
+        extentTest.get().log(Status.PASS, "Passed");
         try {
             WebDriver driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
             test.addScreenCaptureFromPath(takeScreenshot(driver), result.getMethod().getMethodName());
@@ -33,7 +35,7 @@ public class Listener extends BaseTest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        test.fail(result.getThrowable());
+        extentTest.get().fail(result.getThrowable());
         try {
             WebDriver driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
             test.addScreenCaptureFromPath(takeScreenshot(driver), result.getMethod().getMethodName());
