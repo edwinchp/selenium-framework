@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ErrorValidation extends BaseTest {
 
         @Test
-        public void wrongLogin() throws IOException, InterruptedException {
+        public void loginWithInvalidCredentials() throws IOException, InterruptedException {
             LoginPage loginPage = launchApplication();
             loginPage.typeUsername("Username");
             loginPage.typePassword(getProperties().getProperty("password"));

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class StandAlone extends BaseTest {
 
         @Test
-        public void login() throws IOException {
+        public void loginWithValidCredentials() throws IOException {
             LoginPage loginPage = launchApplication();
             loginPage.typeUsername(getProperties().getProperty("username"));
             loginPage.typePassword(getProperties().getProperty("password"));
