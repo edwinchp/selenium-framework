@@ -45,4 +45,9 @@ public class LoginPage extends Page {
         return getText(errorMessage);
     }
 
+    public CategoryPage goToCategorySection(){
+        click(By.xpath("//a[normalize-space()='Categorías']"));
+        return new CategoryPage(driver);
+    }
+
 }

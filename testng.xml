@@ -18,4 +18,10 @@
             <class name="tests.StandAlone"/>
         </classes>
     </test>
+
+    <test thread-count="5" name="CategoryTest">
+        <classes>
+            <class name="tests.CategoryTest"/>
+        </classes>
+    </test>
 </suite>
