@@ -18,11 +18,16 @@ public class LoginSteps extends BaseTest {
         loginPage = launchApplication();
     }
 
-    @Given("el usuario ingresa usuario y contraseña para una cuenta tipo {string}")
-    public void elUsuarioIngresaUsuarioYContrasenaParaUnaCuentaTipo(String accountType)  {
-
+    @Given("el usuario ingresa usuario y contraseña válida para una cuenta tipo {string}")
+    public void elUsuarioIngresaUsuarioYContrasenaValidaParaUnaCuentaTipo(String accountType) {
         loginPage.typeUsername(getProperties().getProperty("username"));
         loginPage.typePassword(getProperties().getProperty("password"));
+    }
+
+    @Given("el usuario ingresa usuario y contraseña inválida para una cuenta tipo {string}")
+    public void elUsuarioIngresaUsuarioYContrasenaInvalidaParaUnaCuentaTipo(String accountType) {
+        loginPage.typeUsername("Secretario Cualquiera");
+        loginPage.typePassword("password");
     }
 
     @And("da click en el boton Iniciar Sesión")
@@ -34,6 +39,5 @@ public class LoginSteps extends BaseTest {
     public void elIngresoALaAplicacionEsExitoso() {
         Assert.assertTrue(loginPage.isNavbarDisplayed());
     }
-
 
 }
