@@ -40,4 +40,8 @@ public class LoginSteps extends BaseTest {
         Assert.assertTrue(loginPage.isNavbarDisplayed());
     }
 
+    @Then("el mensaje es mostrado {string}")
+    public void elMensajeEsMostrado(String message) {
+        Assert.assertEquals(loginPage.getErrorMessage(), message);
+    }
 }

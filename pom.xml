@@ -81,7 +81,7 @@
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
-      <version>7.11.1</version>
+      <version>7.11.2</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
@@ -90,6 +90,28 @@
       <artifactId>cucumber-testng</artifactId>
       <version>7.11.2</version>
     </dependency>
+
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-core</artifactId>
+      <version>1.2.6</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>7.11.2</version>
+      <scope>test</scope>
+    </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
     <dependency>
@@ -111,6 +133,31 @@
       <artifactId>extentreports</artifactId>
       <version>5.0.9</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports-cucumber4-adapter -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports-cucumber4-adapter</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>tech.grasshopper</groupId>
+      <artifactId>extentreports-cucumber5-adapter</artifactId>
+      <version>2.16.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>1.2.6</version>
+      <type>pom</type>
+    </dependency>
+
+
+
 
   </dependencies>
 
