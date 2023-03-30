@@ -8,3 +8,9 @@ Feature: Iniciar sesion en la aplicación
     And da click en el boton Iniciar Sesión
     Then el ingreso a la aplicación es exitoso
 
+  Scenario: Prueba Login
+    Given el usuario ingresa usuario y contraseña válida para una cuenta tipo "secretario"
+    And da click en el boton Iniciar Sesión
+    Then el ingreso a la aplicación es exitoso
+
+

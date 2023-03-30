@@ -5,31 +5,30 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.gherkin.model.Feature;
 import io.cucumber.core.gherkin.Step;
 import io.cucumber.java.*;
+import org.openqa.selenium.WebDriver;
 import resources.utils.ExtentReportCucumber;
 
 import java.lang.annotation.Annotation;
 
 public class CucumberHooks extends BaseTest {
-    ExtentReports extent = ExtentReportCucumber.getReportObject();
+    static ExtentReports extent;
     ExtentTest test;
-    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+
     
-    @Before
-    public void beforeScenario(Scenario scenario){
-        test = extent.createTest(scenario.getName());
-        extentTest.set(test);
+    @BeforeAll
+    public static void beforeScenario(){
+        extent = ExtentReportCucumber.getReportObject();
     }
 
     @After()
-    public void afterScenario(Scenario scenario){
-
+    public void afterScenario(Scenario scenario) {
+        test = extent.createTest(scenario.getName());
         if(scenario.isFailed()){
-            extentTest.get().fail("Failed");
+            test.fail("Error");
         }
         else {
-            extentTest.get().pass("Passed");
+            test.pass("Correcto");
         }
-        //driver.close();
         extent.flush();
     }
 }
