@@ -1,9 +1,11 @@
 package steps;
 
 import components.BaseTest;
+import components.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.LoginPage;
 
@@ -11,11 +13,17 @@ import java.io.IOException;
 
 public class LoginSteps extends BaseTest {
 
-    LoginPage loginPage;
+    private WebDriver driver;
+    private LoginPage loginPage;
+
+    public LoginSteps(){
+        driver = DriverFactory.getDriver();
+        loginPage = new LoginPage(driver);
+    }
 
     @Given("el usuario abre la aplicación en el navegador")
     public void elUsuarioAbreLaAplicacionEnElNavegador() throws IOException {
-        loginPage = launchApplication();
+        driver.get("https://www.wikipedia.com");
     }
 
     @Given("el usuario ingresa usuario y contraseña válida para una cuenta tipo {string}")

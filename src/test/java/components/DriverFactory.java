@@ -9,10 +9,10 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class DriverFactory {
-    private WebDriver driver;
-    private Properties prop;
+    private static WebDriver driver;
+    private static Properties prop;
 
-    public WebDriver getDriver(){
+    public static WebDriver getDriver(){
         prop = new Properties();
         prop = new TestProperties().getProperties();
 

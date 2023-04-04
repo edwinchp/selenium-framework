@@ -42,11 +42,12 @@ public class BaseTest {
        return driver;
     }
 
-    protected LoginPage launchApplication() throws IOException {
-        driver = initializeDriver();
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.goTo(getProperties().getProperty("url"));
-        return loginPage;
+    protected void launchApplication() throws IOException {
+        /*driver = initializeDriver();
+        LoginPage loginPage = new LoginPage(driver);*/
+        prop = new Properties();
+        driver.get(getProperties().getProperty("url"));
+        //return loginPage;
     }
 
     protected Properties getProperties(){

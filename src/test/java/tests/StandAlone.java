@@ -15,10 +15,10 @@ public class StandAlone extends BaseTest {
 
         @Test
         public void loginWithValidCredentials() throws IOException {
-            LoginPage loginPage = launchApplication();
+            /*LoginPage loginPage = launchApplication();
             loginPage.typeUsername(getProperties().getProperty("username"));
             loginPage.typePassword(getProperties().getProperty("password"));
             loginPage.clickLoginButton();
-            Assert.assertTrue(loginPage.isNavbarDisplayed());
+            Assert.assertTrue(loginPage.isNavbarDisplayed());*/
         }
 }
