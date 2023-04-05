@@ -16,7 +16,7 @@ public class CucumberHooks extends BaseTest {
 
     
     @BeforeAll
-    public static void beforeScenario(){
+    public static void beforeAll(){
         extent = ExtentReportCucumber.getReportObject();
     }
 

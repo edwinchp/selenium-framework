@@ -27,8 +27,7 @@ public class BaseTest {
     public WebDriver driver;
     private Properties prop;
 
-
-    protected WebDriver initializeDriver() throws IOException {
+    protected WebDriver initializeDriver() {
         prop = new Properties();
         prop = new TestProperties().getProperties();
 
@@ -51,6 +50,8 @@ public class BaseTest {
     }
 
     protected Properties getProperties(){
+        prop = new Properties();
+        prop = new TestProperties().getProperties();
         return prop;
     }
 

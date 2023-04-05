@@ -2,6 +2,7 @@ package steps;
 
 import components.BaseTest;
 import components.DriverFactory;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,17 +14,18 @@ import java.io.IOException;
 
 public class LoginSteps extends BaseTest {
 
-    private WebDriver driver;
+    DriverFactory driverFactory;
+    WebDriver driver;
     private LoginPage loginPage;
 
-    public LoginSteps(){
-        driver = DriverFactory.getDriver();
-        loginPage = new LoginPage(driver);
-    }
 
     @Given("el usuario abre la aplicación en el navegador")
     public void elUsuarioAbreLaAplicacionEnElNavegador() throws IOException {
-        driver.get("https://www.wikipedia.com");
+
+        driverFactory = new DriverFactory();
+        driver = driverFactory.getDriver();
+        loginPage = new LoginPage(driver);
+        loginPage.goTo(getProperties().getProperty("url"));
     }
 
     @Given("el usuario ingresa usuario y contraseña válida para una cuenta tipo {string}")
@@ -51,5 +53,10 @@ public class LoginSteps extends BaseTest {
     @Then("el mensaje es mostrado {string}")
     public void elMensajeEsMostrado(String message) {
         Assert.assertEquals(loginPage.getErrorMessage(), message);
+    }
+
+    @After
+    public void afterScenario(){
+        driverFactory.closeDriver();
     }
 }

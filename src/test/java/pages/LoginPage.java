@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import pages.base.Page;
 
 public class LoginPage extends Page {
-    //private WebDriver driver;
+    private WebDriver driver;
 
     public LoginPage(WebDriver driver){
         super(driver);
-        //this.driver = driver;
+        this.driver = driver;
     }
 
     By usernameInput = By.id("login");
@@ -21,9 +21,9 @@ public class LoginPage extends Page {
     By errorMessage = By.xpath("//div[@class='swal-text']");
 
 
-    /*public void goTo(String url){
+    public void goTo(String url){
         driver.get(url);
-    }*/
+    }
 
     public void typeUsername(String username){
         type(usernameInput, username);
@@ -45,9 +45,9 @@ public class LoginPage extends Page {
         return getText(errorMessage);
     }
 
-    /*public CategoryPage goToCategorySection(){
+    public CategoryPage goToCategorySection(){
         click(By.xpath("//a[normalize-space()='Categorías']"));
         return new CategoryPage(driver);
-    }*/
+    }
 
 }
