@@ -9,14 +9,15 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.LoginPage;
+import pages.base.BaseClass;
 
 import java.io.IOException;
 
-public class LoginSteps extends BaseTest {
+public class LoginSteps extends BaseClass {
 
     DriverFactory driverFactory;
     WebDriver driver;
-    private LoginPage loginPage;
+    //private LoginPage loginPage;
 
 
     @Given("el usuario abre la aplicación en el navegador")
