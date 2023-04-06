@@ -2,13 +2,9 @@ package components;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.gherkin.model.Feature;
-import io.cucumber.core.gherkin.Step;
 import io.cucumber.java.*;
-import org.openqa.selenium.WebDriver;
 import resources.utils.ExtentReportCucumber;
-
-import java.lang.annotation.Annotation;
+import resources.utils.Helper;
 
 public class CucumberHooks extends BaseTest {
     static ExtentReports extent;
@@ -18,6 +14,11 @@ public class CucumberHooks extends BaseTest {
     @BeforeAll
     public static void beforeAll(){
         extent = ExtentReportCucumber.getReportObject();
+    }
+
+    @Before
+    public static void beforeScenario(){
+        Helper.setUpDriver();
     }
 
     @After()
@@ -30,5 +31,6 @@ public class CucumberHooks extends BaseTest {
             test.pass("Correcto");
         }
         extent.flush();
+        Helper.tearDownDriver();
     }
 }

@@ -10,23 +10,18 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.LoginPage;
 import pages.base.BaseClass;
+import resources.utils.Helper;
 
 import java.io.IOException;
 
 public class LoginSteps extends BaseClass {
 
-    DriverFactory driverFactory;
-    WebDriver driver;
-    //private LoginPage loginPage;
-
 
     @Given("el usuario abre la aplicación en el navegador")
     public void elUsuarioAbreLaAplicacionEnElNavegador() throws IOException {
 
-        driverFactory = new DriverFactory();
-        driver = driverFactory.getDriver();
-        loginPage = new LoginPage(driver);
-        loginPage.goTo(getProperties().getProperty("url"));
+        loginPage = new LoginPage(Helper.getDriver());
+        loginPage.goTo(Helper.getTestData("url"));
     }
 
     @Given("el usuario ingresa usuario y contraseña válida para una cuenta tipo {string}")
@@ -56,8 +51,4 @@ public class LoginSteps extends BaseClass {
         Assert.assertEquals(loginPage.getErrorMessage(), message);
     }
 
-    @After
-    public void afterScenario(){
-        driverFactory.closeDriver();
-    }
 }
