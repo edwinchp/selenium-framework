@@ -19,15 +19,14 @@ public class LoginSteps extends BaseClass {
 
     @Given("el usuario abre la aplicación en el navegador")
     public void elUsuarioAbreLaAplicacionEnElNavegador() throws IOException {
-
         loginPage = new LoginPage(Helper.getDriver());
         loginPage.goTo(Helper.getTestData("url"));
     }
 
     @Given("el usuario ingresa usuario y contraseña válida para una cuenta tipo {string}")
     public void elUsuarioIngresaUsuarioYContrasenaValidaParaUnaCuentaTipo(String accountType) {
-        loginPage.typeUsername(getProperties().getProperty("username"));
-        loginPage.typePassword(getProperties().getProperty("password"));
+        loginPage.typeUsername(Helper.getTestData("username"));
+        loginPage.typePassword(Helper.getTestData("password"));
     }
 
     @Given("el usuario ingresa usuario y contraseña inválida para una cuenta tipo {string}")
